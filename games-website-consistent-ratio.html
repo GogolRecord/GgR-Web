@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOGOL RECORD</title>
+    <style>
+        
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: #000;
+    padding: 15px 0;
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid #333;
+}
+
+.menu-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.site-title {
+    font-size: 1.8rem;
+    margin: 0;
+    color: #4a90e2;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.welcome-section {
+    text-align: center;
+    padding: 50px 0;
+}
+
+.welcome-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.category-title {
+    color: #4a90e2;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 10px 0 30px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.game-column {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.game-card {
+    transition: transform 0.2s;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-card:hover {
+    transform: scale(1.03);
+}
+
+.game-image-container {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    overflow: hidden;
+}
+
+.game-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-bottom: 1px solid #333;
+}
+
+.game-info {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-title {
+    font-size: 1.5rem;
+    margin: 0 0 10px 0;
+    color: #ff7700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.game-description {
+    font-size: 0.9rem;
+    color: #cccccc;
+    margin: 0;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limit to 3 lines */
+    -webkit-box-orient: vertical;
+}
+
+.footer {
+    background-color: #000;
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.divider {
+    height: 1px;
+    background-color: #333;
+    margin: 30px 0;
+}
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="menu-icon">☰</div>
+        <h1 class="site-title">GOGOL RECORD</h1>
+    </div>
+    
+    <div class="welcome-section">
+        <h2 class="welcome-title">BIENVENUE DANS L'ONGLET</h2>
+        <h3 class="category-title">JEUX PC</h3>
+    </div>
+    
+    <div class="divider"></div>
+    
+    <div class="container">
+        <div class="games-grid">
+            <!-- Column 1 -->
+            <div class="game-column">
+                <a href="#theforest" class="game-card">
+                    <div class="game-image-container">
+                        <img src="img/games/TheForest.png" alt="The Forest" class="game-image">
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">The Forest</h3>
+                        <p class="game-description">A horror game where you must survive five nights as a security guard at Freddy Fazbear's Pizza.</p>
+                    </div>
+                </a>
+                
+                <a href="#etb" class="game-card">
+                    <div class="game-image-container">
+                        <img src="img/games/?????.png" alt="?????" class="game-image">
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">?????</h3>
+                        <p class="game-description">A brief description of the game goes here.</p>
+                    </div>
+                </a>
+                
+                <a href="#payday" class="game-card">
+                    <div class="game-image-container">
+                        <img src="/api/placeholder/400/300" alt="Payday" class="game-image">
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Rien</h3>
+                        <p class="game-description">A brief description of the game goes here.</p>
+                    </div>
+                </a>
+                
+                <a href="#gta5" class="game-card">
+                    <div class="game-image-container">
+                        <img src="/api/placeholder/400/300" alt="Grand Theft Auto V" class="game-image">
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Rien</h3>
+                        <p class="game-description">An action-adventure game set in the sprawling city of Los Santos and surrounding areas.</p>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Column 2 -->
+<div class="game-column">
+           <a href="#etb" class="game-card">
+                    <div class="game-image-container">
+                        <img src="img/games/EscapeTheBackrooms.png" alt="Escape The Backrooms" class="game-image">
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Escape The Backrooms</h3>
+                        <p class="game-description">A brief description of the game goes here.</p>
+                    </div>
+                </a>
+                
+                <a href="#lethalcompany" class="game-card">
+                    <div class="game-image-container">
+                        <img src="/api/placeholder/400/300" alt="Lethal Company" class="game-image">
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Rien</h3>
+                        <p class="game-description">A brief description of the game goes here.</p>
+                    </div>
+                </a>
+                
+                <a href="#viewfinder" class="game-card">
+                    <div class="game-image-container">
+                        <img src="/api/placeholder/400/300" alt="Viewfinder" class="game-image">
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Rien</h3>
+                        <p class="game-description">A brief description of the game goes here.</p>
+                    </div>
+                </a>
+                
+                <a href="#amongus" class="game-card">
+                    <div class="game-image-container">
+                        <img src="/api/placeholder/400/300" alt="Among Us" class="game-image">
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Rien</h3>
+                        <p class="game-description">A multiplayer game of teamwork and betrayal where players must find the impostor among the crew.</p>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Column 3 -->
+            <div class="game-column">
+                <a href="#darksouls" class="game-card">
+                    <div class="game-image-container">
+                        <img src="/api/placeholder/400/300" alt="Dark Souls" class="game-image">
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Rien</h3>
+                        <p class="game-description">A challenging action RPG set in a dark fantasy world. Known for its difficulty and complex level design.</p>
+                    </div>
+                </a>
+                
+                <a href="#payday2" class="game-card">
+                    <div class="game-image-container">
+                        <img src="/api/placeholder/400/300" alt="Payday 2" class="game-image">
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Rien</h3>
+                        <p class="game-description">A brief description of the game goes here.</p>
+                    </div>
+                </a>
+                
+                <a href="#payday3" class="game-card">
+                    <div class="game-image-container">
+                        <img src="/api/placeholder/400/300" alt="Payday 3" class="game-image">
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Rien</h3>
+                        <p class="game-description">A cooperative first-person shooter where players team up to execute elaborate heists.</p>
+                    </div>
+                </a>
+                
+                <a href="#rdr" class="game-card">
+                    <div class="game-image-container">
+                        <img src="/api/placeholder/400/300" alt="Red Dead Redemption" class="game-image">
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Rien</h3>
+                        <p class="game-description">An open-world western action-adventure game with an immersive story and vast frontier to explore.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        © 2025 GOGOL RECORD
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Game website loaded!');
+        });
+    </script>
+</body>
+</html>
