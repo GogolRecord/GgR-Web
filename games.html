@@ -11,7 +11,7 @@ body {
     background-color: #121212;
     color: #ffffff;
     margin: 0;
-    padding: 0;
+    padding: 0 0 60px 0; /* Added bottom padding to prevent content being hidden behind fixed footer */
 }
 
 .header {
@@ -132,7 +132,7 @@ body {
     margin: 0;
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* Limit to 3 lines */
+    line-clamp: 25; /* Limit to 3 lines */
     -webkit-box-orient: vertical;
 }
 
@@ -140,9 +140,12 @@ body {
     background-color: #000;
     text-align: center;
     padding: 15px;
-    margin-top: 30px;
     font-size: 0.8rem;
     color: #666;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 100;
 }
 
 .divider {
@@ -201,7 +204,7 @@ body {
         <div class="games-grid">
             <!-- Column 1 -->
             <div class="game-column">
-                <a href="#theforest" class="game-card">
+                <a href="games/TheForest.html" class="game-card">
                     <div class="game-image-container">
                         <img src="img/games/TheForest.png" alt="The Forest" class="game-image">
                     </div>

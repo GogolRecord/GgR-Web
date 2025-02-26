@@ -2,11 +2,13 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GOGOL RECORD</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+    
+            font-family: 'Archivo Black', sans-serif;
             background-color: #121212;
             color: #ffffff;
             margin: 0;
@@ -17,23 +19,49 @@
         }
 
         .header {
-            background-color: #000;
+            background-color: #000000;
+            font-family: 'Archivo Black', normal;
             padding: 15px 0;
             text-align: center;
             position: relative;
             border-bottom: 1px solid #333;
         }
-
-        .menu-icon {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            font-size: 24px;
+        <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation</title>
+    <style>
+        /* Conteneur du menu */
+        .menu {
+            position: fixed; /* Fixé en haut */
+            top: 10px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
         }
 
-        .menu {
+        /* Style des boutons */
+        .menu button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        /* Effet au survol */
+        .menu button:hover {
+            background-color: #0056b3;
+        }
+
+
+        .menu
+         {
             display: none;
             position: absolute;
             top: 50px;
@@ -85,6 +113,7 @@
 
         .site-title {
             font-size: 1.8rem;
+            font-family: 'Archivo Black', sans-serif;
             margin: 0;
             color: #4a90e2;
             text-transform: uppercase;
@@ -120,7 +149,7 @@
 
     <div class="footer">
         <a href="https://dsc.gg/gogol" target="_blank" style="color: #4a90e2; font-size: 1.2rem; text-decoration: none;">
-            Rejoindre le Discord 🚀
+            rejoindre le discord 🚀
         </a>
         <br>
         <img src="img/MrGogol.png" alt="Nicolas Gogol">
