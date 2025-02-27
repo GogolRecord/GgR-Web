@@ -2,166 +2,161 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GOGOL RECORD</title>
+    <title>GoGol Record</title>
     <style>
+
+        
         body {
-    
-            font-family: 'Archivo Black', sans-serif;
+            font-family: 'Impact', serif;
             background-color: #121212;
             color: #ffffff;
             margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        .header {
-            background-color: #000;
-            padding: 15px 0;
-            text-align: center;
-            position: relative;
-            border-bottom: 1px solid #333;
-        }
-
-        /* Conteneur du menu */
-        .menu {
-            position: fixed; /* Fixé en haut */
-            top: 10px;
-            right: 20px;
-            display: flex;
-            gap: 10px;
-        }
-
-        /* Style des boutons */
-        .menu button {
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: 0.3s;
-        }
-
-        /* Effet au survol */
-        .menu button:hover {
-            background-color: #0056b3;
-        }
-
-
-        .menu
-         {
-            display: none;
-            position: absolute;
-            top: 50px;
-            left: 15px;
-            background: #333;
-            padding: 10px;
-            border-radius: 5px;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            opacity: 0;
-            transform: translateY(-10px);
-        }
-
-        .menu.active {
-            display: block;
+            padding: 0 0 60px 0;
             opacity: 1;
-            transform: translateY(0);
+            transition: opacity 0.5s ease;
         }
-
-        .menu a {
-            display: block;
-            color: white;
-            text-decoration: none;
-            padding: 5px 10px;
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            border-bottom: 4px solid #0b2234;
+            background-color: #030303
         }
-
-        .menu a:hover {
-            background: #555;
-        }
-
-        .welcome-section {
-            text-align: center;
-            padding: 50px 0;
-            flex-grow: 1;
-        }
-
-        .welcome-title {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        .category-title {
-            color: #4a90e2;
-            text-align: center;
-            text-transform: uppercase;
-            margin: 10px 0 30px 0;
-        }
-
-        .site-title {
-            font-size: 1.8rem;
-            font-family: 'Archivo Black', sans-serif;
-            margin: 0;
-            color: #4a90e2;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
         }
 
         .footer {
+            background-color: #000;
             text-align: center;
-            margin-top: auto;
-            padding: 20px 0;
+            padding: 15px;
+            font-size: 0.8rem;
+            color: #666;
+            position: center;
+            bottom: 0;
+            width: 100%;
+            z-index: 100;
+        }
+        
+        .logo {
+            width: 40px;
+            height: 40px;
+            background-color: #0b2234;
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        
+        .site-name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .nav-button {
+            padding: 5px 10px;
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            font-weight: normal;
+            text-align: center;
+        }
+        
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 90px;
+            font-weight: normal;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .server-link {
+            margin: 20px 0 40px;
+            text-decoration: none;
+            color: #24678d;
+        }
+        
+        .rocket {
+            color: red;
+        }
+        
+        .info-text {
+            max-width: 1000px;
+            text-align: center;
+            line-height: 1.6;
+            font-size: 40px;
+            color: #24678d; 
         }
 
-        .footer img {
-            width: 980px;
-            margin-top: -100px;
+
+        .discord {
+            color: #4a90e2;
+            text-align: center;
+            text-transform: uppercase;
+            margin: 0px 0 100px 0;
+            font-size: 25px;
         }
+
+        .section1 {
+    background-color: #222;
+    height: -10vh; /* La moitié de l'écran */
+    width: 2550px;
+}
+
+.section2 {
+    background-color: #111;
+    height: 50vh;
+}
+
     </style>
 </head>
 <body>
-    <div class="header">
-        <div class="menu-icon" onclick="toggleMenu()">☰</div>
-        <div class="menu" id="menu">
-            <a href="index.html" class="page-link">Accueil</a>
-            <a href="games.html" class="page-link">Jeux</a>
+    <header>
+        
+        <div class="logo-container">
+            <div class="logo">🎵</div>
+            <div class="site-name">GoGol Record</div>
         </div>
-        <h1 class="site-title">GOGOL RECORD</h1>
+        <div class="nav-buttons">
+            <a href="index.html" class="nav-button">acceuil</a>
+            <a href="games.html" class="nav-button">jeux</a>
+            <a href="lechemescouilles" class="nav-button">logiciels</a>
+        </div>
+    </header>
+    
+    <main>
+        <div class="section1">
+            <h1>BIENVENUE SUR LE SITE DE<br>GOGOL RECORD</h1>
+            <div class="discord">
+                <a href="https://dsc.gg/gogol" class="server-link">REJOINDRE LE SERVEUR <span class="rocket">🚀</span><a>
+        </div>
     </div>
 
-    <div class="welcome-section">
-        <h2 class="welcome-title">Bienvenue sur Gogol Record</h2>
-        <h3 class="category-title">Site Officiel du Serveur Discord Gogol Record!</h3>
-    </div>
-
-    <div class="footer">
-        <a href="https://dsc.gg/gogol" target="_blank" style="color: #4a90e2; font-size: 1.2rem; text-decoration: none;">
-            rejoindre le discord 🚀
-        </a>
-        <br>
-        <img src="img/MrGogol.png" alt="Nicolas Gogol">
-    </div>
-
-    <script>
-        function toggleMenu() {
-            var menu = document.getElementById("menu");
-            menu.classList.toggle("active");
-        }
-
-        document.addEventListener("click", function(event) {
-            var menu = document.getElementById("menu");
-            var menuIcon = document.querySelector(".menu-icon");
-            if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
-                menu.classList.remove("active");
-            }
-        });
-    </script>
+        
+        <p class="info-text">
+            sur ce site, vous retrouverez vos jeux et logiciels préférés
+            gratuitement! si vous avez le moindre soucis ou la moindre
+            demande, rejoignez le discord ci dessus et prenez
+            un ticket, le staff vous répondra au plus vite!
+        </p>
+    </main>
 </body>
 </html>
-

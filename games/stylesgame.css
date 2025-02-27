@@ -149,17 +149,17 @@ body.fade-out {
     transform: translateY(-2px); /* Reduced from -3px */
 }
 
-/* Style for the games button */
+/* Games button styling */
 .games-button {
     position: fixed;
-    bottom: var(--spacing-md);
+    bottom: calc(var(--spacing-md) + 40px); /* Moved higher up from the bottom */
     left: var(--spacing-md);
-    padding: clamp(8px, 2vw, 12px) clamp(14px, 3vw, 24px); /* Reduced from 12px/17px, 20px/34px */
+    padding: clamp(8px, 2vw, 12px) clamp(14px, 3vw, 24px);
     background-color: #3498db;
     color: white;
     border: none;
     border-radius: var(--border-radius-sm);
-    font-size: clamp(11px, 2.5vw, 15px); /* Reduced from 16px, 22px */
+    font-size: clamp(11px, 2.5vw, 15px);
     font-weight: bold;
     text-decoration: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -200,6 +200,18 @@ body.fade-out {
     border-width: clamp(14px, 3vw, 20px) 0 clamp(14px, 3vw, 20px) clamp(21px, 5vw, 39px); /* Reduced from 20px, 28px, 30px, 56px */
     border-color: transparent transparent transparent white;
     margin-left: 5px; /* Reduced from 7px */
+}
+
+.footer {
+    background-color: #000;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.8rem;
+    color: #666;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 100;
 }
 
 /* Page transition overlay */
@@ -254,7 +266,7 @@ body.fade-out {
     }
 
     .title {
-        padding: 11px; /* 70% of 15px */
+        padding: 11px; /* 70% of 15px */    /* crame moi la bite */
     }
 
     .video-arrow {
