@@ -5,156 +5,162 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GOGOL RECORD</title>
     <style>
-        
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #121212;
-    color: #ffffff;
-    margin: 0;
-    padding: 0 0 60px 0; /* Added bottom padding to prevent content being hidden behind fixed footer */
-}
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0 0 60px 0;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
 
-.header {
-    background-color: #000;
-    padding: 15px 0;
-    text-align: center;
-    position: relative;
-    border-bottom: 1px solid #333;
-}
+        /* Hide body during page load to enable fade-in on initial load */
+        body.fade-out {
+            opacity: 0;
+        }
 
-.menu-icon {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    font-size: 24px;
-}
+        .header {
+            background-color: #000;
+            padding: 15px 0;
+            text-align: center;
+            position: relative;
+            border-bottom: 1px solid #333;
+        }
 
-.site-title {
-    font-size: 1.8rem;
-    margin: 0;
-    color: #4a90e2;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
+        .menu-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 24px;
+        }
 
-.welcome-section {
-    text-align: center;
-    padding: 50px 0;
-}
+        .site-title {
+            font-size: 1.8rem;
+            margin: 0;
+            color: #4a90e2;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
 
-.welcome-title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-}
+        .welcome-section {
+            text-align: center;
+            padding: 50px 0;
+        }
 
-.category-title {
-    color: #4a90e2;
-    text-align: center;
-    text-transform: uppercase;
-    margin: 10px 0 30px 0;
-}
+        .welcome-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
-}
+        .category-title {
+            color: #4a90e2;
+            text-align: center;
+            text-transform: uppercase;
+            margin: 10px 0 30px 0;
+        }
 
-.games-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
 
-.game-column {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
 
-.game-card {
-    transition: transform 0.2s;
-    cursor: pointer;
-    display: block;
-    text-decoration: none;
-    background-color: #1e1e1e;
-    border-radius: 10px;
-    overflow: hidden;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
+        .game-column {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
 
-.game-card:hover {
-    transform: scale(1.03);
-}
+        .game-card {
+            transition: transform 0.2s;
+            cursor: pointer;
+            display: block;
+            text-decoration: none;
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
 
-.game-image-container {
-    position: relative;
-    width: 100%;
-    padding-top: 56.25%; /* 16:9 aspect ratio */
-    overflow: hidden;
-}
+        .game-card:hover {
+            transform: scale(1.03);
+        }
 
-.game-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-bottom: 1px solid #333;
-}
+        .game-image-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            overflow: hidden;
+        }
 
-.game-info {
-    padding: 15px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-}
+        .game-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-bottom: 1px solid #333;
+        }
 
-.game-title {
-    font-size: 1.5rem;
-    margin: 0 0 10px 0;
-    color: #ff7700;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+        .game-info {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
 
-.game-description {
-    font-size: 0.9rem;
-    color: #cccccc;
-    margin: 0;
-    overflow: hidden;
-    display: -webkit-box;
-    line-clamp: 25; /* Limit to 3 lines */
-    -webkit-box-orient: vertical;
-}
+        .game-title {
+            font-size: 1.5rem;
+            margin: 0 0 10px 0;
+            color: #ff7700;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
 
-.footer {
-    background-color: #000;
-    text-align: center;
-    padding: 15px;
-    font-size: 0.8rem;
-    color: #666;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    z-index: 100;
-}
+        .game-description {
+            font-size: 0.9rem;
+            color: #cccccc;
+            margin: 3;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
 
-.divider {
-    height: 1px;
-    background-color: #333;
-    margin: 30px 0;
-}
+        .footer {
+            background-color: #000;
+            text-align: center;
+            padding: 15px;
+            font-size: 0.8rem;
+            color: #666;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 100;
+        }
 
-.menu {
+        .divider {
+            height: 1px;
+            background-color: #333;
+            margin: 30px 0;
+        }
+
+        .menu {
             display: none;
             position: absolute;
             top: 50px;
@@ -174,25 +180,40 @@ body {
         .menu a:hover {
             background: #555;
         }
+
+        /* Page transition overlay */
+        .page-transition-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #121212;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .page-transition-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
     </style>
 </head>
-<body>
+<body class="fade-out">
+    <!-- Page transition overlay -->
+    <div class="page-transition-overlay" id="pageTransition"></div>
+    
     <div class="header">
         <div class="menu-icon" onclick="toggleMenu()">☰</div>
         <div class="menu" id="menu">
-            <a href="index.html">Accueil</a>
-            <a href="games.html">Jeux</a>
+            <a href="index.html" class="page-link">Accueil</a>
+            <a href="games.html" class="page-link">Jeux</a>
         </div>
         <h1 class="site-title">GOGOL RECORD</h1>
     </div>
 
-    <script>
-        function toggleMenu() {
-            var menu = document.getElementById("menu");
-            menu.style.display = (menu.style.display === "block") ? "none" : "block";
-        }
-    </script>
-    
     <div class="welcome-section">
         <h2 class="welcome-title">BIENVENUE DANS L'ONGLET</h2>
         <h3 class="category-title">JEUX PC</h3>
@@ -204,9 +225,9 @@ body {
         <div class="games-grid">
             <!-- Column 1 -->
             <div class="game-column">
-                <a href="games/TheForest.html" class="game-card">
+                <a href="games/TheForest.html" class="game-card page-link">
                     <div class="game-image-container">
-                        <img src="img/games/TheForest.png" alt="The Forest" class="game-image">
+                        <img src="games/img/TheForest.png" alt="The Forest" class="game-image">
                     </div>
                     <div class="game-info">
                         <h3 class="game-title">The Forest</h3>
@@ -214,20 +235,19 @@ body {
                     </div>
                 </a>
                 
-                <a href="#viewfinder" class="game-card">
+                <a href="#viewfinder" class="game-card page-link">
                     <div class="game-image-container">
-                        <img src="img/games/Viewfinder.png" alt="Viewfinder" class="game-image">
+                        <img src="games/img/Viewfinder.png" alt="Viewfinder" class="game-image">
                     </div>
                     <div class="game-info">
                         <h3 class="game-title">ViewFinder</h3>
-                        <p class="game-description">Défiez la perception, redéfinissez la réalité et remodelez le monde qui vous entoure avec un appareil photo instantané. Viewfinder est un nouveau jeu solo offrant aux joueurs des heures d'expériences passionnantes et l'occasion de percer des mystères oubliés.
-</p>
+                        <p class="game-description">Défiez la perception, redéfinissez la réalité et remodelez le monde qui vous entoure avec un appareil photo instantané. Viewfinder est un nouveau jeu solo offrant aux joueurs des heures d'expériences passionnantes et l'occasion de percer des mystères oubliés.</p>
                     </div>
                 </a>
                 
-                <a href="#lockdownprotocol" class="game-card">
+                <a href="#lockdownprotocol" class="game-card page-link">
                     <div class="game-image-container">
-                        <img src="img/games/LockdownProtocol.png" alt="LockDown Protocol" class="game-image">
+                        <img src="games/img/LockdownProtocol.png" alt="LockDown Protocol" class="game-image">
                     </div>
                     <div class="game-info">
                         <h3 class="game-title">LockDown Protocol</h3>
@@ -235,23 +255,22 @@ body {
                     </div>
                 </a>
                 
-                <a href="#amongus" class="game-card">
+                <a href="#amongus" class="game-card page-link">
                     <div class="game-image-container">
-                        <img src="img/games/AmongUs.png" alt="Among Us" class="game-image">
+                        <img src="games/img/AmongUs.png" alt="Among Us" class="game-image">
                     </div>
                     <div class="game-info">
                         <h3 class="game-title">Among Us</h3>
-                        <p class="game-description">Travail d'équipe et trahison sont les maîtres mots dans ce party-game local et en ligne pour 4 à 15 joueurs... dans l'espace !
-</p>
+                        <p class="game-description">Travail d'équipe et trahison sont les maîtres mots dans ce party-game local et en ligne pour 4 à 15 joueurs... dans l'espace !</p>
                     </div>
                 </a>
             </div>
             
             <!-- Column 2 -->
-<div class="game-column">
-           <a href="#etb" class="game-card">
+            <div class="game-column">
+                <a href="#etb" class="game-card page-link">
                     <div class="game-image-container">
-                        <img src="img/games/EscapeTheBackrooms.png" alt="Escape The Backrooms" class="game-image">
+                        <img src="games/img/EscapeTheBackrooms.png" alt="Escape The Backrooms" class="game-image">
                     </div>
                     <div class="game-info">
                         <h3 class="game-title">Escape The Backrooms</h3>
@@ -259,9 +278,9 @@ body {
                     </div>
                 </a>
                 
-                <a href="#lethalcompany" class="game-card">
+                <a href="#lethalcompany" class="game-card page-link">
                     <div class="game-image-container">
-                        <img src="img/games/LethalCompany.png" alt="Lethal Company" class="game-image">
+                        <img src="games/img/LethalCompany.png" alt="Lethal Company" class="game-image">
                     </div>
                     <div class="game-info">
                         <h3 class="game-title">Lethal Company</h3>
@@ -269,9 +288,9 @@ body {
                     </div>
                 </a>
                 
-                <a href="#undertale" class="game-card">
+                <a href="#undertale" class="game-card page-link">
                     <div class="game-image-container">
-                        <img src="img/games/Undertale.png" alt="UNDERTALE" class="game-image">
+                        <img src="games/img/Undertale.png" alt="UNDERTALE" class="game-image">
                     </div>
                     <div class="game-info">
                         <h3 class="game-title">UNDERTALE</h3>
@@ -279,7 +298,7 @@ body {
                     </div>
                 </a>
                 
-                <a href="#amongus" class="game-card">
+                <a href="#amongus" class="game-card page-link">
                     <div class="game-image-container">
                         <img src="/api/placeholder/400/300" alt="Among Us" class="game-image">
                     </div>
@@ -292,9 +311,9 @@ body {
             
             <!-- Column 3 -->
             <div class="game-column">
-                <a href="#panicore" class="game-card">
+                <a href="#panicore" class="game-card page-link">
                     <div class="game-image-container">
-                        <img src="img/games/Panicore.png" alt="Panicore" class="game-image">
+                        <img src="games/img/Panicore.png" alt="Panicore" class="game-image">
                     </div>
                     <div class="game-info">
                         <h3 class="game-title">PANICORE</h3>
@@ -302,7 +321,7 @@ body {
                     </div>
                 </a>
                 
-                <a href="#payday2" class="game-card">
+                <a href="#payday2" class="game-card page-link">
                     <div class="game-image-container">
                         <img src="/api/placeholder/400/300" alt="Payday 2" class="game-image">
                     </div>
@@ -312,7 +331,7 @@ body {
                     </div>
                 </a>
                 
-                <a href="#payday3" class="game-card">
+                <a href="#payday3" class="game-card page-link">
                     <div class="game-image-container">
                         <img src="/api/placeholder/400/300" alt="Payday 3" class="game-image">
                     </div>
@@ -322,7 +341,7 @@ body {
                     </div>
                 </a>
                 
-                <a href="#rdr" class="game-card">
+                <a href="#rdr" class="game-card page-link">
                     <div class="game-image-container">
                         <img src="/api/placeholder/400/300" alt="Red Dead Redemption" class="game-image">
                     </div>
@@ -340,9 +359,42 @@ body {
     </div>
 
     <script>
+        // Fade in the page when it loads
         document.addEventListener('DOMContentLoaded', function() {
+            // Remove the fade-out class to reveal the page with animation
+            setTimeout(function() {
+                document.body.classList.remove('fade-out');
+            }, 50);
+            
             console.log('Game website loaded!');
+            
+            // Add click event listeners to all page links
+            const pageLinks = document.querySelectorAll('.page-link');
+            pageLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    
+                    // Only apply transition if it's a valid link (not #)
+                    if (href && !href.startsWith('#')) {
+                        e.preventDefault();
+                        
+                        // Show the transition overlay
+                        const overlay = document.getElementById('pageTransition');
+                        overlay.classList.add('active');
+                        
+                        // Wait for the animation to complete before navigating
+                        setTimeout(function() {
+                            window.location.href = href;
+                        }, 500); // Match the transition duration
+                    }
+                });
+            });
         });
+        
+        function toggleMenu() {
+            var menu = document.getElementById("menu");
+            menu.style.display = (menu.style.display === "block") ? "none" : "block";
+        }
     </script>
 </body>
 </html>
