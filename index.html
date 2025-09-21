@@ -1,177 +1,27 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GoGol Record</title>
-    <style>
-
-        
-        body {
-            font-family: 'Impact', serif;
-            background-color: #121212;
-            color: #ffffff;
-            margin: 0;
-            padding: 0 0 60px 0;
-            opacity: 1;
-            transition: opacity 0.5s ease;
-        }
-        
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            border-bottom: 4px solid #0b2234;
-            background-color: #030303
-        }
-        
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .footer {
-            background-color: #000;
-            text-align: center;
-            padding: 15px;
-            font-size: 0.8rem;
-            color: #666;
-            position: center;
-            bottom: 0;
-            width: 100%;
-            z-index: 100;
-        }
-        
-        .logo {
-            width: 40px;
-            height: 40px;
-            background-color: #0b2234;
-            border-radius: 50%;
-            margin-right: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-        }
-        
-        .site-name {
-            font-size: 20px;
-            font-weight: bold;
-        }
-        
-        .nav-buttons {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .nav-button {
-            border-radius: 5px;
-            background-color: rgba(11,34,52,0.5) ;
-            padding: 12px 20px;
-            text-decoration: none;
-            color: rgb(255, 255, 255);
-            font-weight: normal;
-            text-align: center;
-        }
-        
-        main {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 40px 20px;
-            text-align: center;
-        }
-        
-        h1 {
-            font-size: 90px;
-            font-weight: normal;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        
-        .server-link {
-            margin: 20px 0 40px;
-            text-decoration: none;
-            color: #24678d;
-        }
-        
-        .rocket {
-            color: red;
-        }
-        
-        .info-text {
-            max-width: 1000px;
-            text-align: center;
-            line-height: 1.6;
-            font-size: 40px;
-            color: #24678d; 
-        }
-
-
-        .discord {
-            color: #4a90e2;
-            text-align: center;
-            text-transform: uppercase;
-            margin: 0px 0 100px 0;
-            font-size: 25px;
-            background-color: rgba(11,34,52,0.5) ;
-            padding: 10px 20px;
-        }
-
-        .section1 {
-    background-color: #222;
-    height: -10vh; /* La moitié de l'écran */
-    width: 2550px;
-}
-
-.section2 {
-    background-color: #111;
-    height: 50vh;
-}
-
-    </style>
+  <meta charset="UTF-8">
+  <title>GGR - Accueil</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        
-        <div class="logo-container">
-            <div class="logo">🎵</div>
-            <div class="site-name">GoGol Record</div>
-        </div>
-        <div class="nav-buttons">
-            <a href="index.html" class="nav-button">ACCEUILL</a>      
-            <a href="games.html" class="nav-button">JEUX</a>
-            <a href="lechemescouilles" class="nav-button">LOGICIELS</a>
-        </div>
-    </header>
-    
-    <main>
-        <div class="section1">
-            <h1>BIENVENUE SUR LE SITE DE<br>GOGOL RECORD</h1>
-            <div class="discord">
-                <a href="https://dsc.gg/gogol" class="server-link">REJOINDRE LE SERVEUR <span class="rocket">🚀</span><a>
-        </div>
+  <header>
+    <div class="logo">Gogol Record</div>
+    <nav>
+      <a href="index.html" class="active">Accueil</a>
+      <a href="jeux.html">Jeux</a>
+      <a href="communaute.html">Communauté</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <img src="n.gogol.png" alt="Image de mon Homme">
+    <div class="hero-text">
+      <h1>Bienvenue sur le site Gogol Record</h1>
+      <p>L'endroit parfait pour tous vos jeux</p>
+      <a href="jeux.html" class="btn">Parcourir les Jeux Disponible</a>
     </div>
-
-        
-        <p class="info-text">
-            sur ce site, vous retrouverez vos jeux et logiciels préférés
-            gratuitement! si vous avez le moindre soucis ou la moindre
-            demande, rejoignez le discord ci dessus et prenez
-            un ticket, le staff vous répondra au plus vite! z
-        </p>
-    </main>
-
-    <script>
-        function isMobile() {
-    return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-}
-
-if (isMobile()) {
-    window.location.href = "indexTelephone.html";
-}
-
-    </script>
+  </section>
 </body>
 </html>
