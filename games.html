@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOGOL RECORD</title>
+    <style>
+        body {
+            font-family: 'Impact', serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            padding-top: 72px;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        body.fade-out {
+            opacity: 0;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #030303;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background-color: #0b2234;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            background: #0b2234;
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo img {
+            border-radius: 50%;
+        }
+
+        .site-name {
+            font-size: 20px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-button {
+            border-radius: 5px;
+            background: rgba(11, 34, 52, 0.5);
+            padding: 12px 20px;
+            text-decoration: none;
+            color: white;
+            transition: background 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: rgba(11, 34, 52, 0.8);
+        }
+
+        .nav-button.active {
+            background: rgba(11, 34, 52, 0.9);
+            border-bottom: 3px solid #24678d;
+        }
+
+        .welcome-section {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .welcome-title {
+            font-size: 80px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .category-title {
+            color: #4a90e2;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 70px;
+            margin: 10px 0 30px 0;
+        }
+
+        .search-container {
+            max-width: 500px;
+            margin: 0 auto 30px;
+            padding: 12px 15px;
+            position: sticky;
+            top: 72px;
+            z-index: 999;
+        }
+
+.search-input {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    background-color: rgba(30, 30, 30, 0.8);
+    border: 2px solid rgba(74, 144, 226, 1);
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Arial', sans-serif;
+    box-sizing: border-box;
+}
+
+        .search-input:focus {
+            outline: none;
+            border-color: #6ba3f5;
+            box-shadow: 0 0 10px rgba(74, 144, 226, 0.3);
+        }
+
+        .search-input::placeholder {
+            color: #999;
+        }
+
+        .no-results {
+            text-align: center;
+            color: #999;
+            padding: 40px 15px;
+            font-size: 1.1rem;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: #333;
+            margin: 30px 0;
+        }
+
+        .content-after-divider {
+            background-color: #1a1a1a;
+            padding: 30px 0 30px 0;
+            margin-top: 30px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 15px;
+            width: 100%;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            width: 100%;
+        }
+
+        .game-card {
+            font-family: 'Arial', serif;
+            transition: transform 0.2s;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .game-card:hover {
+            transform: scale(1.03);
+        }
+
+        .game-card.hidden {
+            display: none;
+        }
+
+        .game-image-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            overflow: hidden;
+        }
+
+        .game-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-bottom: 1px solid #333;
+        }
+
+        .game-info {
+            padding: 15px;
+            flex-grow: 0;
+            display: flex;
+            flex-direction: column;
+            height: 120px;
+        }
+
+        .game-title {
+            font-size: 1.3rem;
+            margin: 0 0 10px 0;
+            color: #24678d;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .game-description {
+            font-size: 0.9rem;
+            color: #cccccc;
+            margin: 0;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+
+        .page-transition-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #121212;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .page-transition-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @media (max-width: 1024px) {
+            .games-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .nav-button {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+
+            .welcome-title {
+                font-size: 40px;
+            }
+
+            .category-title {
+                font-size: 35px;
+            }
+        }
+    </style>
+</head>
+<body class="fade-out">
+    <div class="page-transition-overlay" id="pageTransition"></div>
+    
+    <header>
+        <a href="index.html" style="text-decoration: none; color: inherit;" class="page-link">
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="MRGoGol.noel.png" width="100%" height="100%" alt="logo">
+                </div>
+                <div class="site-name">GoGol Record</div>
+            </div>
+        </a>
+        <div class="nav-buttons">
+            <a href="index.html" class="nav-button page-link">ACCUEIL</a>
+            <a href="games.html" class="nav-button active page-link">JEUX</a>
+            <a href="logiciels.html" class="nav-button page-link">LOGICIELS</a>
+        </div>
+    </header>
+
+    <div class="welcome-section">
+        <h1 class="welcome-title">BIENVENUE DANS L'ONGLET</h1>
+        <h1 class="category-title">JEUX PC</h1>
+    </div>
+    
+
+    <div class="content-after-divider">
+        <div class="search-container">
+            <input 
+                type="text" 
+                id="searchInput" 
+                class="search-input" 
+                placeholder="Rechercher un jeu..."
+                onkeyup="filterGames()"
+            >
+        </div>
+        
+        <div class="container">
+            <div id="noResults" class="no-results" style="display: none;">
+                Aucun jeu ne correspond à votre recherche.
+            </div>
+            <div class="games-grid" id="gamesGrid">
+                <!-- THE FOREST -->
+                <a href="games/TheForest.html" class="game-card page-link" data-hidden="false" data-title="The Forest" data-description="Seul survivant d'un accident d'avion, vous vous retrouvez dans une forêt mystérieuse où vous devez lutter pour rester en vie contre une société de mutants cannibales.">
+                    <div class="game-image-container">
+                        <img src="games/img/TheForest.png" alt="The Forest" class="game-image">
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">The Forest</h3>
+                        <p class="game-description">Seul survivant d'un accident d'avion, vous vous retrouvez dans une forêt mystérieuse où vous devez lutter pour rester en vie contre une société de mutants cannibales.</p>
+                    </div>
+                </a>
+
+                <!-- VIEWFINDER -->
+                <a href="games/ViewFinder.html" class="game-card page-link" data-hidden="false" data-title="ViewFinder" data-description="Défiez la perception et remodelhez le monde avec un appareil photo instantané. Explorez et percez des mystères oubliés.">
+                    <div class="game-image-container">
+                        <img src="games/img/Viewfinder.png" alt="ViewFinder" class="game-image">
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">ViewFinder</h3>
+                        <p class="game-description">Défiez la perception et remodelhez le monde avec un appareil photo instantané. Explorez et percez des mystères oubliés.</p>
+                    </div>
+                </a>
+
+                <!-- MINECRAFT -->
+                <a href="games/Minecraft.html" class="game-card page-link" data-hidden="false" data-title="Minecraft" data-description="Jeu vidéo de type aventure bac à sable. Construisez, explorez et créez dans des mondes infinis.">
+                    <div class="game-image-container">
+                        <img src="games/img/Minecraft.png" alt="Minecraft" class="game-image">
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Minecraft</h3>
+                        <p class="game-description">Jeu vidéo de type aventure bac à sable. Construisez, explorez et créez dans des mondes infinis.</p>
+                    </div>
+                </a>
+
+                <!-- ESCAPE THE BACKROOMS -->
+                <a href="games/EscapeTheBackrooms.html" class="game-card page-link" data-hidden="false" data-title="Escape The Backrooms" data-description="Jeu d'exploration d'horreur coopérative pour 1 à 4 joueurs. Traversez des niveaux sinistres tout en évitant les entités.">
+                    <div class="game-image-container">
+                        <img src="games/img/EscapeTheBackrooms.png" alt="Escape The Backrooms" class="game-image">
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Escape The Backrooms</h3>
+                        <p class="game-description">Jeu d'exploration d'horreur coopérative pour 1 à 4 joueurs. Traversez des niveaux sinistres tout en évitant les entités.</p>
+                    </div>
+                </a>
+
+                <!-- LUNCH LADY -->
+                <a href="games/LunchLady.html" class="game-card page-link" data-hidden="false" data-title="Lunch Lady" data-description="Jeu de survie et d'horreur en coopérative pour 1 à 4 joueurs. Trouvez les réponses des tests sans vous faire attraper!">
+                    <div class="game-image-container">
+                        <img src="games/img/LunchLady.png" alt="Lunch Lady" class="game-image">
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Lunch Lady</h3>
+                        <p class="game-description">Jeu de survie et d'horreur en coopérative pour 1 à 4 joueurs. Trouvez les réponses des tests sans vous faire attraper!</p>
+                    </div>
+                </a>
+
+                <!-- AMONG US -->
+                <a href="games/AmongUs.html" class="game-card page-link" data-hidden="false" data-title="Among Us" data-description="Travail d'équipe et trahison dans ce party-game local et en ligne pour 4 à 15 joueurs... dans l'espace!">
+                    <div class="game-image-container">
+                        <img src="games/img/AmongUs.png" alt="Among Us" class="game-image">
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Among Us</h3>
+                        <p class="game-description">Travail d'équipe et trahison dans ce party-game local et en ligne pour 4 à 15 joueurs... dans l'espace!</p>
+                    </div>
+                </a>
+
+                <!-- LETHAL COMPANY -->
+                <a href="games/LethalCompany.html" class="game-card page-link" data-hidden="false" data-title="Lethal Company" data-description="Coopérative d'horreur consistant à fouiller les lunes abandonnées pour vendre de la ferraille à la société.">
+                    <div class="game-image-container">
+                        <img src="games/img/LethalCompany.png" alt="Lethal Company" class="game-image">
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Lethal Company</h3>
+                        <p class="game-description">Coopérative d'horreur consistant à fouiller les lunes abandonnées pour vendre de la ferraille à la société.</p>
+                    </div>
+                </a>
+
+                <!-- BACKROOM COMPANY -->
+                <a href="games/BackroomCompany.html" class="game-card page-link" data-hidden="false" data-title="Backroom Company" data-description="Groupe mystérieux explorant les Backrooms. Suivez les traces des explorateurs disparus et trouvez des objets étranges.">
+                    <div class="game-image-container">
+                        <img src="games/img/BackroomCompany.png" alt="Backroom Company" class="game-image">
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Backroom Company</h3>
+                        <p class="game-description">Groupe mystérieux explorant les Backrooms. Suivez les traces des explorateurs disparus et trouvez des objets étranges.</p>
+                    </div>
+                </a>
+
+                <!-- PANICORE -->
+                <a href="games/PANICORE.html" class="game-card page-link" data-hidden="false" data-title="PANICORE" data-description="Jeu de survie et d'horreur mélangeant permadeath, monstres IA et expérience coopérative.">
+                    <div class="game-image-container">
+                        <img src="games/img/Panicore.png" alt="PANICORE" class="game-image">
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">PANICORE</h3>
+                        <p class="game-description">Jeu de survie et d'horreur mélangeant permadeath, monstres IA et expérience coopérative.</p>
+                    </div>
+                </a>
+
+                <!-- R.E.P.O. -->
+                <a href="games/REPO.html" class="game-card page-link" data-hidden="false" data-title="R.E.P.O." data-description="Jeu d'horreur coopératif pour jusqu'à 6 joueurs. Localisez des objets précieux entièrement basés sur la physique.">
+                    <div class="game-image-container">
+                        <img src="games/img/REPO.png" alt="R.E.P.O." class="game-image">
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">R.E.P.O.</h3>
+                        <p class="game-description">Jeu d'horreur coopératif pour jusqu'à 6 joueurs. Localisez des objets précieux entièrement basés sur la physique.</p>
+                    </div>
+                </a>
+
+                <!-- SCHEDULE I -->
+                <a href="games/ScheduleI.html" class="game-card page-link" data-hidden="false" data-title="Schedule I" data-description="Du petit trafiquant de drogue au baron, fabriquez et distribuez une variété de drogues dans Hyland Point.">
+                    <div class="game-image-container">
+                        <img src="games/img/ScheduleI.png" alt="Schedule I" class="game-image">
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Schedule I</h3>
+                        <p class="game-description">Du petit trafiquant de drogue au baron, fabriquez et distribuez une variété de drogues dans Hyland Point.</p>
+                    </div>
+                </a>
+
+                <!-- UNDERTALE -->
+                <a href="games/UNDERTALE.html" class="game-card page-link" data-hidden="false" data-title="UNDERTALE" data-description="Le jeu RPG où vous n'avez pas à détruire qui que ce soit. Une aventure unique et inoubliable!">
+                    <div class="game-image-container">
+                        <img src="games/img/Undertale.png" alt="UNDERTALE" class="game-image">
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">UNDERTALE</h3>
+                        <p class="game-description">Le jeu RPG où vous n'avez pas à détruire qui que ce soit. Une aventure unique et inoubliable!</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const hideGames = {
+            'TheForest': false,
+            'ViewFinder': true,
+            'Minecraft': false,
+            'EscapeTheBackrooms': false,
+            'LunchLady': false,
+            'AmongUs': false,
+            'LethalCompany': true,
+            'BackroomCompany': false,
+            'PANICORE': true,
+            'REPO': false,
+            'ScheduleI': false,
+            'UNDERTALE': true
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Apply hiding logic
+            const gameCards = document.querySelectorAll('.game-card');
+            gameCards.forEach(card => {
+                const href = card.getAttribute('href');
+                const gameName = href.match(/games\/(.+?)\.html/)?.[1];
+                
+                if (gameName && hideGames[gameName] === true) {
+                    card.classList.add('hidden');
+                }
+            });
+
+            setTimeout(function() {
+                document.body.classList.remove('fade-out');
+            }, 50);
+            
+            console.log('Game website loaded!');
+            
+            const pageLinks = document.querySelectorAll('.page-link');
+            pageLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    
+                    if (href && !href.startsWith('#')) {
+                        e.preventDefault();
+                        
+                        const overlay = document.getElementById('pageTransition');
+                        overlay.classList.add('active');
+                        
+                        setTimeout(function() {
+                            window.location.href = href;
+                        }, 500);
+                    }
+                });
+            });
+        });
+
+        function filterGames() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            // Remove periods and spaces from search input
+            const normalizedSearch = searchInput.replace(/[\s.]/g, '');
+            const gameCards = document.querySelectorAll('.game-card');
+            let visibleCount = 0;
+
+            gameCards.forEach(card => {
+                const title = card.getAttribute('data-title').toLowerCase();
+                const isHidden = card.classList.contains('hidden');
+                
+                // Remove periods and spaces from title
+                const normalizedTitle = title.replace(/[\s.]/g, '');
+                
+                const matches = normalizedTitle.includes(normalizedSearch);
+                
+                if (matches && !isHidden) {
+                    card.style.display = '';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            const noResults = document.getElementById('noResults');
+            noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

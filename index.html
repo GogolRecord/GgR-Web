@@ -1,27 +1,353 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>GGR - Accueil</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-    <div class="logo">Gogol Record</div>
-    <nav>
-      <a href="index.html" class="active">Accueil</a>
-      <a href="jeux.html">Jeux</a>
-      <a href="communaute.html">Communauté</a>
-    </nav>
-  </header>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoGol Record — Accueil</title>
+    <style>
+        body {
+            font-family: 'Impact', serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100vh;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
 
-  <section class="hero">
-    <img src="n.gogol.png" alt="Image de mon Homme">
-    <div class="hero-text">
-      <h1>Bienvenue sur le site Gogol Record</h1>
-      <p>L'endroit parfait pour tous vos jeux</p>
-      <a href="jeux.html" class="btn">Parcourir les Jeux Disponible</a>
-    </div>
-  </section>
+        body.fade-out {
+            opacity: 0;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #030303;
+            position: relative;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background-color: #0b2234;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            background: #0b2234;
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo img {
+            border-radius: 50%;
+        }
+
+        .site-name {
+            font-size: 20px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-button {
+            border-radius: 5px;
+            background: rgba(11, 34, 52, 0.5);
+            padding: 12px 20px;
+            text-decoration: none;
+            color: white;
+            transition: 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: rgba(11, 34, 52, 0.8);
+        }
+
+        .nav-button.active {
+            background: rgba(11, 34, 52, 0.9);
+            border-bottom: 3px solid #24678d;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+            text-align: center;
+            background-color: #222;
+            height: calc(100vh - 68px);
+            justify-content: space-between;
+        }
+
+        .main-content {
+            background: #222;
+            width: 100%;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 100px;
+            margin: 20px 0;
+            color: #0b2234;
+            text-shadow: -2px -2px 0 #24678d, 2px -2px 0 #24678d, -2px 2px 0 #24678d, 2px 2px 0 #24678d;
+        }
+
+        .discord-link {
+            color: white;
+            text-decoration: none;
+            background: rgba(11, 34, 52, 0.5);
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 23px;
+            margin-bottom: 20px;
+            display: inline-block;
+            transition: background 0.3s ease;
+        }
+
+        .discord-link:hover {
+            background: rgba(11, 34, 52, 0.8);
+        }
+
+        .bottom-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .button-container {
+            order: 1;
+            padding: 20px 0 10px 0;
+        }
+
+        #toggleBtn {
+            margin-bottom: 0;
+            width: 60px;
+            height: 60px;
+            background: rgba(11, 34, 52, 0.7);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            transition: background 0.3s ease;
+        }
+
+        #toggleBtn:hover {
+            background: rgba(11, 34, 52, 0.9);
+        }
+
+        #toggleBtn .chev {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        #toggleBtn .chev img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        #toggleBtn[aria-expanded="true"] .chev {
+            transform: rotate(-180deg);
+        }
+
+        .grey-section {
+            width: 100%;
+            background: #222;
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.45s ease;
+            order: 2;
+        }
+
+        .grey-section.open {
+            max-height: 400px;
+        }
+
+        #textContent {
+            width: 100%;
+            background: #121212;
+            padding: 0 40px;
+            line-height: 1.8;
+            font-size: 24px;
+            color: #24678d;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.45s ease, opacity 0.45s ease, padding 0.45s ease;
+            border-top: 4px solid #0b2234;
+            text-align: left;
+        }
+
+        #textContent.open {
+            max-height: 300px;
+            opacity: 1;
+            padding: 40px;
+        }
+
+        #textContent p {
+            margin: 0;
+            text-align: center;
+        }
+
+        .page-transition-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #121212;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .page-transition-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 32px;
+            }
+            
+            #textContent {
+                font-size: 18px;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .nav-button {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body class="fade-out">
+    <div class="page-transition-overlay" id="pageTransition"></div>
+    
+    <header>
+        <a href="index.html" style="text-decoration: none; color: inherit;" class="page-link">
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="MRGoGol.noel.png" width="100%" height="100%" alt="logo">
+                </div>
+                <div class="site-name">GoGol Record</div>
+            </div>
+        </a>
+        <div class="nav-buttons">
+            <a href="index.html" class="nav-button active page-link">ACCUEIL</a>
+            <a href="games.html" class="nav-button page-link">JEUX</a>
+            <a href="logiciels.html" class="nav-button page-link">LOGICIELS</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="main-content">
+            <h1>BIENVENUE SUR LE SITE DE<br>GOGOL RECORD</h1>
+            <a href="https://dsc.gg/gogol" target="_blank" rel="noopener noreferrer" class="discord-link">
+                REJOINDRE LE SERVEUR 🚀
+            </a>
+        </div>
+
+        <div class="bottom-container">
+            <div class="button-container">
+                <button id="toggleBtn" aria-expanded="false" aria-controls="textContent">
+                    <span class="chev">
+                        <img src="fleche-vers-le-haut.png" alt="">
+                    </span>
+                </button>
+            </div>
+
+            <div class="grey-section" id="greySection">
+                <div id="textContent" role="region" aria-labelledby="toggleBtn">
+                    <p>
+                        Sur ce site, vous retrouverez vos jeux et logiciels préférés gratuitement !<br>
+                        Si vous avez le moindre soucis ou la moindre demande, rejoignez le Discord ci-dessus et prenez un ticket,<br>
+                        le staff vous répondra au plus vite !
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fade in effect on page load
+            setTimeout(function() {
+                document.body.classList.remove('fade-out');
+            }, 50);
+
+            // Toggle button functionality
+            const btn = document.getElementById('toggleBtn');
+            const content = document.getElementById('textContent');
+            const greySection = document.getElementById('greySection');
+
+            content.classList.remove('open');
+            greySection.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+
+            btn.addEventListener('click', () => {
+                const isOpen = content.classList.toggle('open');
+                greySection.classList.toggle('open');
+                btn.setAttribute('aria-expanded', String(isOpen));
+            });
+
+            // Page transition effect
+            const pageLinks = document.querySelectorAll('.page-link');
+            pageLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    
+                    if (href && !href.startsWith('#')) {
+                        e.preventDefault();
+                        
+                        const overlay = document.getElementById('pageTransition');
+                        overlay.classList.add('active');
+                        
+                        setTimeout(function() {
+                            window.location.href = href;
+                        }, 500);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

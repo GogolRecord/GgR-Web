@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoGol Record — Logiciels</title>
+    <style>
+        body {
+            font-family: 'Impact', serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            border-bottom: 4px solid #0b2234;
+            background-color: #030303;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            background: #0b2234;
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo img {
+            border-radius: 50%;
+        }
+
+        .site-name {
+            font-size: 20px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-button {
+            border-radius: 5px;
+            background: rgba(11, 34, 52, 0.5);
+            padding: 12px 20px;
+            text-decoration: none;
+            color: white;
+            transition: 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: rgba(11, 34, 52, 0.8);
+        }
+
+        .nav-button.active {
+            background: rgba(11, 34, 52, 0.9);
+            border-bottom: 3px solid #24678d;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+            text-align: center;
+            background-color: #222;
+            height: calc(100vh - 68px);
+            justify-content: center;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        h1 {
+            font-size: 60px;
+            margin: 0;
+            color: #0b2234;
+            text-shadow: -2px -2px 0 #24678d, 2px -2px 0 #24678d, -2px 2px 0 #24678d, 2px 2px 0 #24678d;
+        }
+
+        .construction-icon {
+            font-size: 80px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .message {
+            font-size: 28px;
+            color: #24678d;
+            margin: 0;
+        }
+
+        .description {
+            font-size: 18px;
+            color: #ffffff;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .discord-link {
+            color: white;
+            text-decoration: none;
+            background: rgba(11, 34, 52, 0.5);
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 18px;
+            display: inline-block;
+            transition: background 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .discord-link:hover {
+            background: rgba(11, 34, 52, 0.8);
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 32px;
+            }
+
+            .message {
+                font-size: 20px;
+            }
+
+            .description {
+                font-size: 16px;
+            }
+
+            .construction-icon {
+                font-size: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" style="text-decoration: none; color: inherit;">
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="MRGoGol.noel.png" width="100%" height="100%" alt="logo">
+                </div>
+                <div class="site-name">GoGol Record</div>
+            </div>
+        </a>
+        <div class="nav-buttons">
+            <a href="index.html" class="nav-button">ACCUEIL</a>
+            <a href="games.html" class="nav-button">JEUX</a>
+            <a href="logiciels.html" class="nav-button active">LOGICIELS</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="main-content">
+            <div class="construction-icon">🔨</div>
+            <h1>TRAVAIL EN COURS</h1>
+            <p class="message">Cette page arrive très bientôt !</p>
+            <p class="description">
+                Nous travaillons actuellement sur la section logiciels.<br>
+                Revenez régulièrement pour découvrir nos logiciels gratuits !
+            </p>
+            <div>
+                <a href="https://dsc.gg/gogol" target="_blank" rel="noopener noreferrer" class="discord-link">
+                    Rejoindre le Discord pour plus d'infos 🚀
+                </a>
+                <div>
+        </div>
+    </main>
+</body>
+</html>
