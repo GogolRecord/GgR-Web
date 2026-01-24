@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sons Of The Forest | Gogol Record</title>
+    <link rel="stylesheet" href="stylesgame.css">
+</head>
+<body class="fade-out">
+    <div class="page-transition-overlay" id="pageTransition"></div>
+    
+    <!-- Header -->
+    <header>
+        <a href="index.html" style="text-decoration: none; color: inherit;" class="page-link">
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="../MRGoGol.noel.png" width="100%" height="100%" alt="logo">
+                </div>
+                <div class="site-name">GoGol Record</div>
+            </div>
+        </a>
+        <div class="nav-buttons">
+            <a href="../index.html" class="nav-button page-link">ACCUEIL</a>
+            <a href="../games.html" class="nav-button active page-link">JEUX</a>
+            <a href="../logiciels.html" class="nav-button page-link">LOGICIELS</a>
+        </div>
+    </header>
+
+    <!-- Game content -->
+    <div class="media-container">
+        <div class="main-image-container" id="media-display">
+            <img src="img/SonsOfTheForest.png" alt="The Forest Cover" id="cover-image">
+            <div class="video-arrow" id="play-button"></div>
+        </div>
+        <div class="info-panel">
+            <div class="info-label">Développeur</div>
+            <div class="info-label-info">Endnight Games Ltd</div>
+
+            <div class="info-label" style="margin-top: var(--spacing-md);">Genre</div>
+            <div class="info-label-info">Horreur</div>
+
+            <div class="info-label">Date de Sortie</div>
+            <div class="info-label-info">22 février 2024</div>
+
+            <div class="info-label" style="margin-top: var(--spacing-md);">Mode de Jeu</div>
+            <div class="info-label-info">Solo, Co-Op</div>
+        </div>
+    </div>
+    
+    <div class="title">En mission sur une île isolée pour retrouver un milliardaire porté disparu, vous découvrez un monde de cauchemar infesté de cannibales. Par vous-même ou avec l'aide d'amis, fabriquez, construisez et luttez pour votre survie dans ce jeu de simulation de survie horrifique.</div>
+    
+    <a href="https://www.mediafire.com/file/avn26rr3mi5v71v/Sons+Of+The+Forest.zip/file" class="download-button">Téléchargement</a>
+
+    <a href="/games.html" class="games-button"><span style="font-size: 1.5em; line-height: 0; position: relative; top: 2px;">⬅</span> Autres Jeux</a>
+
+    <!-- YouTube API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    
+    <script>
+        let player;
+        
+        function onYouTubeIframeAPIReady() {
+            // Function ready for YouTube API
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fade in effect
+            setTimeout(function() {
+                document.body.classList.remove('fade-out');
+            }, 50);
+
+            const mediaDisplay = document.getElementById('media-display');
+            const coverImage = document.getElementById('cover-image');
+            const playButton = document.getElementById('play-button');
+            const videoId = 'IwvhH3islZw';
+            
+            const playerDiv = document.createElement('div');
+            playerDiv.id = 'youtube-player';
+            playerDiv.style.width = '100%';
+            playerDiv.style.height = '100%';
+            playerDiv.style.display = 'none';
+            mediaDisplay.appendChild(playerDiv);
+            
+            playButton.addEventListener('click', function() {
+                coverImage.style.display = 'none';
+                playButton.style.display = 'none';
+                playerDiv.style.display = 'block';
+                
+                player = new YT.Player('youtube-player', {
+                    videoId: videoId,
+                    playerVars: {
+                        'autoplay': 1,
+                        'controls': 1,
+                        'rel': 0,
+                        'modestbranding': 1
+                    },
+                    events: {
+                        'onStateChange': onPlayerStateChange
+                    }
+                });
+            });
+            
+            function onPlayerStateChange(event) {
+                if (event.data === 0) {
+                    playerDiv.style.display = 'none';
+                    coverImage.style.display = 'block';
+                    playButton.style.display = 'flex';
+                    
+                    player.destroy();
+                    
+                    const newPlayerDiv = document.createElement('div');
+                    newPlayerDiv.id = 'youtube-player';
+                    newPlayerDiv.style.width = '100%';
+                    newPlayerDiv.style.height = '100%';
+                    newPlayerDiv.style.display = 'none';
+                    mediaDisplay.appendChild(newPlayerDiv);
+                }
+            }
+
+            // Page transition effect
+            const pageLinks = document.querySelectorAll('.page-link');
+            pageLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    
+                    if (href && !href.startsWith('#')) {
+                        e.preventDefault();
+                        
+                        const overlay = document.getElementById('pageTransition');
+                        overlay.classList.add('active');
+                        
+                        setTimeout(function() {
+                            window.location.href = href;
+                        }, 500);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
